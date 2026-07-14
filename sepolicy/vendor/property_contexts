@@ -1,0 +1,52 @@
+# Batterysecret
+persist.vendor.accelerate.charge u:object_r:vendor_batterysecret_prop:s0
+
+# Camera
+vendor.camera.             u:object_r:vendor_mtk_camera_prop:s0
+persist.vendor.camera.     u:object_r:vendor_mtk_camera_prop:s0
+
+# Display
+persist.vendor.dc_backlight.enable             u:object_r:vendor_displayfeature_prop:s0
+persist.vendor.max.brightness                  u:object_r:vendor_displayfeature_prop:s0
+ro.vendor.cabc.enable                          u:object_r:vendor_displayfeature_prop:s0
+ro.vendor.display.all_modes_support_WCG.enable u:object_r:vendor_displayfeature_prop:s0
+ro.vendor.display.update_gray_by_temperature   u:object_r:vendor_displayfeature_prop:s0
+ro.vendor.displayfeature.dump                  u:object_r:vendor_displayfeature_prop:s0
+ro.vendor.histogram.enable                     u:object_r:vendor_displayfeature_prop:s0
+ro.vendor.localhbm.enable                      u:object_r:vendor_displayfeature_prop:s0
+ro.vendor.mi_sf.hdr_enable_flatmode            u:object_r:vendor_displayfeature_prop:s0
+ro.vendor.mtk.pq.aidl                          u:object_r:vendor_displayfeature_prop:s0
+ro.vendor.mtk.pq.odm                           u:object_r:vendor_displayfeature_prop:s0
+ro.vendor.sre.enable                           u:object_r:vendor_displayfeature_prop:s0
+ro.vendor.xiaomi.bl.poll                       u:object_r:vendor_displayfeature_prop:s0
+vendor.display.panel.calibration.status        u:object_r:vendor_displayfeature_prop:s0
+vendor.displayfeature.entry.enable             u:object_r:vendor_displayfeature_prop:s0
+
+# Fingerprint
+persist.vendor.fpc. u:object_r:vendor_fingerprint_prop:s0
+persist.vendor.goodix. u:object_r:vendor_fingerprint_prop:s0
+persist.vendor.sys.fp. u:object_r:vendor_fingerprint_prop:s0
+ro.hardware.fp. u:object_r:vendor_fingerprint_prop:s0
+vendor.fps_hal. u:object_r:vendor_fingerprint_prop:s0
+
+# Mlipay
+persist.vendor.sys.attestation.status    u:object_r:vendor_mlipay_prop:s0
+persist.vendor.sys.id.status             u:object_r:vendor_mlipay_prop:s0
+persist.vendor.sys.pay.                  u:object_r:vendor_mlipay_prop:s0
+persist.vendor.sys.provision.status      u:object_r:vendor_mlipay_prop:s0
+persist.vendor.sys.rkp.status            u:object_r:vendor_mlipay_prop:s0
+vendor.sys.feature_state                 u:object_r:vendor_mlipay_prop:s0
+vendor.sys.rpmb_state                    u:object_r:vendor_mlipay_prop:s0
+
+# RIL
+ro.vendor.oem.sno                        u:object_r:vendor_mtk_radio_prop:s0
+ro.vendor.oem.psno                       u:object_r:vendor_mtk_radio_prop:s0
+ro.vendor.oem.imei                       u:object_r:vendor_mtk_radio_prop:s0
+ro.vendor.oem.meid                       u:object_r:vendor_mtk_radio_prop:s0
+
+# Sensors
+ro.vendor.sensors.xiaomi.		 u:object_r:vendor_sensors_prop:s0
+persist.vendor.sensors.used.framebuffer  u:object_r:vendor_hal_citsensorservice_xiaomi_prop:s0
+
+# Thermal
+vendor.sys.thermal.data.path             u:object_r:vendor_thermal_prop:s0

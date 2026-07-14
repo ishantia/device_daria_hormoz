@@ -1,0 +1,9 @@
+binder_call(vendor_hal_displayfeature_client, vendor_hal_displayfeature_server)
+binder_call(vendor_hal_displayfeature_server, vendor_hal_displayfeature_client)
+
+binder_call(vendor_hal_displayfeature, hal_graphics_composer)
+
+vndbinder_use(vendor_hal_displayfeature)
+
+add_service(vendor_hal_displayfeature_server, vendor_hal_displayfeature_service)
+allow vendor_hal_displayfeature_client vendor_hal_displayfeature_service:service_manager find;

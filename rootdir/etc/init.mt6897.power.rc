@@ -1,0 +1,180 @@
+on early-init
+    # boot perf. tune
+    write /sys/devices/system/cpu/cpufreq/policy0/scaling_min_freq 1800000
+    write /sys/devices/system/cpu/cpufreq/policy4/scaling_min_freq 1800000
+    write /sys/devices/system/cpu/cpufreq/policy7/scaling_min_freq 1800000
+    write /sys/class/devfreq/mtk-dvfsrc-devfreq/userspace/set_freq 5500000000
+
+on charger
+    write /sys/devices/system/cpu/cpufreq/policy0/scaling_min_freq 0
+    write /sys/devices/system/cpu/cpufreq/policy4/scaling_min_freq 0
+    write /sys/devices/system/cpu/cpufreq/policy7/scaling_min_freq 0
+    write /sys/class/devfreq/mtk-dvfsrc-devfreq/userspace/set_freq 0
+
+on init
+    write /sys/block/sda/queue/scheduler mq-deadline
+
+    # Set teo as cpu idle governor
+    write /sys/devices/system/cpu/cpuidle/current_governor teo
+
+    # update cpus for cpuset cgroup
+    write /dev/cpuset/background/cpus 0-3
+    write /dev/cpuset/camera-daemon/cpus 0-7
+    write /dev/cpuset/foreground/cpus 0-6
+    write /dev/cpuset/foreground_window/cpus 0-6
+    write /dev/cpuset/restricted/cpus 0-3
+    write /dev/cpuset/system-background/cpus 0-3
+    write /dev/cpuset/top-app/cpus 0-7
+
+    # adjust PCP high level
+    write /proc/sys/vm/percpu_pagelist_high_fraction 430
+
+    # disable proactive compaction
+    write /proc/sys/vm/compaction_proactiveness 0
+
+    # Make foreground and background I/O priority different. none-to-rt was
+    # introduced in kernel 5.14. promote-to-rt was introduced in kernel 6.5.
+    # Write none-to-rt first and promote-to-rt next to support both older and
+    # newer kernel versions.
+    write /dev/blkio/blkio.prio.class none-to-rt
+    write /dev/blkio/blkio.prio.class promote-to-rt
+
+on post-fs-data
+    # Disable watermark boost
+    write /proc/sys/vm/watermark_boost_factor 0
+
+    # multi-gen LRU
+    write /sys/kernel/mm/lru_gen/enabled y
+
+    # zram
+    write /sys/block/zram0/comp_algorithm lz4
+    write /proc/sys/vm/page-cluster 0
+    write /proc/sys/vm/swappiness 100
+    write /sys/kernel/mm/swap/vma_ra_enabled true
+
+    # boot time fs tune
+    write /sys/block/mmcblk0/queue/iostats 0
+    write /sys/block/mmcblk0/queue/nr_requests 256
+    write /sys/block/sda/queue/iostats 0
+    write /sys/block/sdb/queue/iostats 0
+    write /sys/block/sdc/queue/iostats 0
+    write /sys/block/sdc/queue/nr_requests 256
+
+    # boot perf. tune
+    write /dev/cpuctl/rt/cpu.uclamp.min 100
+    write /dev/cpuctl/rt/cpu.uclamp.latency_sensitive 1
+    write /dev/cpuctl/system-background/cpu.uclamp.min 100
+    write /dev/cpuctl/system-background/cpu.uclamp.latency_sensitive 1
+    write /dev/cpuctl/foreground/cpu.uclamp.min 100
+    write /dev/cpuctl/foreground/cpu.uclamp.latency_sensitive 1
+    write /dev/cpuctl/foreground_window/cpu.uclamp.min 100
+    write /dev/cpuctl/foreground_window/cpu.uclamp.latency_sensitive 1
+    write /dev/cpuctl/top-app/cpu.uclamp.min 100
+    write /dev/cpuctl/top-app/cpu.uclamp.latency_sensitive 1
+    write /dev/cpuctl/background/cpu.uclamp.min 100
+    write /dev/cpuctl/background/cpu.uclamp.latency_sensitive 1
+
+on property:sys.boot_completed=1
+    # end boot time fs tune
+    write /sys/block/mmcblk0/queue/nr_requests 64
+    write /sys/block/sda/queue/nr_requests 64
+    write /sys/block/sdb/queue/nr_requests 64
+    write /sys/block/sdc/queue/nr_requests 64
+
+    # zram writeback
+    setprop persist.sys.zram_enabled 1
+    swapon_all /vendor/etc/fstab.mt6897
+
+    # Adjust watermark level
+    write /proc/sys/vm/watermark_scale_factor 200
+
+    write /proc/sys/kernel/sched_migration_cost_ns 200000
+
+    # restore boot perf. tune
+    write /sys/devices/system/cpu/cpufreq/policy0/scaling_min_freq 0
+    write /sys/devices/system/cpu/cpufreq/policy4/scaling_min_freq 0
+    write /sys/devices/system/cpu/cpufreq/policy7/scaling_min_freq 0
+    write /sys/class/devfreq/mtk-dvfsrc-devfreq/userspace/set_freq 0
+
+    # Utilization Clamping
+    # Tuning
+    write /proc/sys/kernel/sched_util_clamp_min_rt_default 0
+    write /proc/sys/kernel/sched_util_clamp_min 128
+
+    # rt
+    write /dev/cpuctl/rt/cpu.uclamp.latency_sensitive 1
+    write /dev/cpuctl/rt/cpu.uclamp.max max
+    write /dev/cpuctl/rt/cpu.uclamp.min 0
+    write /dev/cpuctl/rt/cpu.shares 20480
+
+    # system
+    write /dev/cpuctl/system/cpu.shares 20480
+
+    # system-background
+    write /dev/cpuctl/system-background/cpu.uclamp.latency_sensitive 0
+    write /dev/cpuctl/system-background/cpu.uclamp.max 60
+    write /dev/cpuctl/system-background/cpu.uclamp.min 0
+    write /dev/cpuctl/system-background/cpu.shares 1024
+
+    # background
+    write /dev/cpuctl/background/cpu.uclamp.latency_sensitive 0
+    write /dev/cpuctl/background/cpu.uclamp.max 40
+    write /dev/cpuctl/background/cpu.uclamp.min 0
+    write /dev/cpuctl/background/cpu.shares 1024
+
+    # foreground
+    write /dev/cpuctl/foreground/cpu.uclamp.latency_sensitive 1
+    write /dev/cpuctl/foreground/cpu.uclamp.max 80
+    write /dev/cpuctl/foreground/cpu.uclamp.min 0
+    write /dev/cpuctl/foreground/cpu.shares 20480
+
+    # foreground_window
+    write /dev/cpuctl/foreground_window/cpu.uclamp.latency_sensitive 1
+    write /dev/cpuctl/foreground_window/cpu.uclamp.max 80
+    write /dev/cpuctl/foreground_window/cpu.uclamp.min 0
+    write /dev/cpuctl/foreground_window/cpu.shares 20480
+
+    # top-app
+    write /dev/cpuctl/top-app/cpu.uclamp.latency_sensitive 1
+    write /dev/cpuctl/top-app/cpu.uclamp.max max
+    write /dev/cpuctl/top-app/cpu.uclamp.min 0
+    write /dev/cpuctl/top-app/cpu.shares 20480
+
+    # nnapi-hal
+    write /dev/cpuctl/nnapi-hal/cpu.uclamp.latency_sensitive 1
+    write /dev/cpuctl/nnapi-hal/cpu.uclamp.max max
+    write /dev/cpuctl/nnapi-hal/cpu.uclamp.min 75
+    write /dev/cpuctl/nnapi-hal/cpu.shares 20480
+
+    # camera-daemon
+    write /dev/cpuctl/camera-daemon/cpu.uclamp.latency_sensitive 1
+    write /dev/cpuctl/camera-daemon/cpu.uclamp.max max
+    write /dev/cpuctl/camera-daemon/cpu.uclamp.min 60
+    write /dev/cpuctl/camera-daemon/cpu.shares 20480
+
+    # dex2oat
+    write /dev/cpuctl/dex2oat/cpu.uclamp.latency_sensitive 0
+    write /dev/cpuctl/dex2oat/cpu.uclamp.max 60
+    write /dev/cpuctl/dex2oat/cpu.uclamp.min 0
+    write /dev/cpuctl/dex2oat/cpu.shares 512
+
+    # start cpuqos
+    write /sys/devices/system/cpu/cpuqos/cpuqos_boot_complete 1
+
+    # Configure DVFS
+    write /sys/kernel/ged/hal/dvfs_margin_value 130
+
+    # Set thermal mode to mgame
+    write /sys/devices/virtual/thermal/thermal_message/sconfig 19
+
+    # Enable PowerHAL hint processing
+    setprop vendor.powerhal.init 1
+
+service vendor.hwcomposer-3-2 /vendor/bin/hw/android.hardware.graphics.composer@3.2-service
+    override
+    class hal animation
+    user system
+    group graphics drmrpc
+    capabilities SYS_NICE
+    onrestart restart surfaceflinger
+    task_profiles ProcessCapacityHigh HighPerformance
