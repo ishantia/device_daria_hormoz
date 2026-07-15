@@ -18,7 +18,7 @@ from extract_utils.main import (
 )
 
 namespace_imports = [
-    'device/xiaomi/hormoz',
+    'device/daria/hormoz',
     'hardware/mediatek',
     'hardware/xiaomi',
 ]
@@ -205,7 +205,7 @@ blob_fixups: blob_fixups_user_type = {
 
 module = ExtractUtilsModule(
     'hormoz',
-    'xiaomi',
+    'daria',
     blob_fixups=blob_fixups,
     lib_fixups=lib_fixups,
     namespace_imports=namespace_imports,
