@@ -185,9 +185,6 @@ PRODUCT_PACKAGES += \
    LineageSDKOverlayHormoz \
    LineageSettingsOverlayHormoz
 
-# Parts
-PRODUCT_PACKAGES += \
-    XiaomiParts
 
 # Page size
 PRODUCT_NO_BIONIC_PAGE_SIZE_MACRO := true

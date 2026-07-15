@@ -17,4 +17,3 @@ vendor.xiaomi.hardware.mlipay.IMlipayService/default        u:object_r:hal_mlipa
 vendor.xiaomi.hardware.aidl.mtdservice.IMTService/default        u:object_r:hal_mtdservice_service:s0
 
 # Sensor
-vendor.xiaomi.sensor.citsensorservice.ICitSensorService/default   u:object_r:vendor_hal_citsensorservice_xiaomi_service:s0
