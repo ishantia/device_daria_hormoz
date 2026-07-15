@@ -5,7 +5,6 @@ type vendor_hal_displayfeature_service, protected_service, service_manager_type;
 type hal_mfidoca_service, protected_service, service_manager_type;
 
 # Fingerprint
-type vendor_hal_fingerprint_service_xiaomi, service_manager_type;
 
 # Mlipay
 type hal_mlipay_service, protected_service, service_manager_type, hal_service_type;

@@ -18,7 +18,6 @@ ro.vendor.mi_sf.hdr_enable_flatmode            u:object_r:vendor_displayfeature_
 ro.vendor.mtk.pq.aidl                          u:object_r:vendor_displayfeature_prop:s0
 ro.vendor.mtk.pq.odm                           u:object_r:vendor_displayfeature_prop:s0
 ro.vendor.sre.enable                           u:object_r:vendor_displayfeature_prop:s0
-ro.vendor.xiaomi.bl.poll                       u:object_r:vendor_displayfeature_prop:s0
 vendor.display.panel.calibration.status        u:object_r:vendor_displayfeature_prop:s0
 vendor.displayfeature.entry.enable             u:object_r:vendor_displayfeature_prop:s0
 
@@ -45,7 +44,6 @@ ro.vendor.oem.imei                       u:object_r:vendor_mtk_radio_prop:s0
 ro.vendor.oem.meid                       u:object_r:vendor_mtk_radio_prop:s0
 
 # Sensors
-ro.vendor.sensors.xiaomi.		 u:object_r:vendor_sensors_prop:s0
 
 # Thermal
 vendor.sys.thermal.data.path             u:object_r:vendor_thermal_prop:s0

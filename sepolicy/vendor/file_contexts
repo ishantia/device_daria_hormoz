@@ -21,7 +21,6 @@
 /vendor/lib(64)?/libbeauty_face_interface\.so             u:object_r:same_process_hal_file:s0
 /vendor/lib(64)?/libc\+\+_shared\.so                      u:object_r:same_process_hal_file:s0
 /vendor/lib(64)?/libcmdl\.so                              u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/libcom.xiaomi.pluginutils\.so            u:object_r:same_process_hal_file:s0
 /vendor/lib(64)?/libmiStereoFactoryRemapLib\.so           u:object_r:same_process_hal_file:s0
 /vendor/lib(64)?/libmiai_deblur\.so                       u:object_r:same_process_hal_file:s0
 /vendor/lib(64)?/libmiai_portraitsupernight\.so           u:object_r:same_process_hal_file:s0
@@ -49,7 +48,6 @@
 
 # Display
 /(vendor|system/vendor)/bin/displayfeature                                                             u:object_r:vendor_displayfeature_exec:s0
-/(vendor|system/vendor)/bin/hw/vendor\.xiaomi\.hardware\.displayfeature_aidl-service                   u:object_r:vendor_hal_displayfeature_default_exec:s0
 /dev/mi_display/disp_feature                                                                           u:object_r:vendor_displayfeature_device:s0
 /data/vendor/display(/.*)?                                                                             u:object_r:vendor_display_data_file:s0
 /mnt/vendor/persist/display(/.*)?                                                                      u:object_r:vendor_persist_display_file:s0
@@ -58,8 +56,7 @@
 /(odm|vendor/odm|system/vendor)/bin/fidoca_mitee                                                       u:object_r:hal_mfidoca_default_exec:s0
 
 # Fingerpint
-/(vendor|system/vendor)/bin/hw/android\.hardware\.biometrics\.fingerprint-service\.xiaomi              u:object_r:hal_fingerprint_default_exec:s0
-/dev/xiaomi-fp u:object_r:fingerprint_device:s0
+/(vendor|system/vendor)/bin/hw/android\.hardware\.biometrics\.fingerprint-service\.hormoz              u:object_r:hal_fingerprint_default_exec:s0
 /data/vendor/fpc(/.*)? u:object_r:fingerprint_vendor_data_file:s0
 /data/vendor/fpdump(/.*)? u:object_r:fingerprint_vendor_data_file:s0
 /mnt/vendor/persist/fpc(/.*)? u:object_r:fingerprint_vendor_data_file:s0
@@ -71,10 +68,8 @@
 /(odm|vendor/odm|system/vendor)/bin/mtd_mitee                                                          u:object_r:hal_mtdservice_default_exec:s0
 
 # Power
-/dev/xiaomi-touch                                                                                      u:object_r:vendor_touchfeature_device:s0
 
 # Sensor
-/vendor/bin/hw/android\.hardware\.sensors-service\.xiaomi-multihal                                     u:object_r:hal_sensors_default_exec:s0
 
 # Thermal
 /(vendor|system/vendor)/bin/mi_thermald                                                                u:object_r:vendor_mi_thermald_exec:s0

@@ -67,8 +67,3 @@ on boot
     # camera flash led
     chown system system /sys/class/flashlight_core/flashlight/torchbrightness
     chmod 0664 /sys/class/flashlight_core/flashlight/torchbrightness
-
-# charger
-on boot && property:ro.product.device=duchamp && property:ro.boot.hwc=GL
-    setprop persist.vendor.accelerate.charge false
-    setprop persist.vendor.extreme.mode false

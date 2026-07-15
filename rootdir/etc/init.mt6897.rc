@@ -312,9 +312,6 @@ on boot
     # Power Manager
     write /sys/power/pm_freeze_timeout 2000
 
-    # Touch feature
-    chown system system /dev/xiaomi-touch
-    chmod 0660 /dev/xiaomi-touch
 
 # Mount mdota
 on property:ro.boot.slot_suffix=_a

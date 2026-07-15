@@ -54,7 +54,6 @@ genfscon sysfs /devices/platform/charger/power_supply/mtk-mst-hvdiv-chg/wakeup  
 genfscon sysfs /devices/platform/charger/power_supply/mtk-slv-hvdiv-chg/wakeup                                          u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/charger/power_supply/usb/wakeup                                                        u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/goodix_ts.0/wakeup                                                                     u:object_r:sysfs_wakeup:s0
-genfscon sysfs /devices/platform/odm/odm:xiaomi_fingerprint/wakeup                                                      u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/soc/11012000.spi2/spi_master/spi2/spi2.0/wakeup                                        u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/soc/1cc04000.spmi/spmi-0/0-04/wakeup                                                   u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/soc/1cc04000.spmi/spmi-0/0-05/wakeup                                                   u:object_r:sysfs_wakeup:s0
