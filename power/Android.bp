@@ -1,5 +1,5 @@
 cc_library_static {
-    name: "libperfmgr-ext-xiaomi",
+    name: "libperfmgr-ext-hormoz",
     defaults: ["android.hardware.power-ndk_shared"],
     vendor: true,
     srcs: [

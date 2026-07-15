@@ -20,7 +20,6 @@ from extract_utils.main import (
 namespace_imports = [
     'device/daria/hormoz',
     'hardware/mediatek',
-    'hardware/xiaomi',
 ]
 
 
@@ -49,10 +48,6 @@ blob_fixups: blob_fixups_user_type = {
 
     'system_ext/lib64/libsink-mtk.so': blob_fixup()
         .add_needed('libaudioclient_shim.so'),
-
-    'odm/bin/hw/vendor.xiaomi.sensor.citsensorservice.aidl': blob_fixup()
-        .replace_needed('libtinyxml2.so', 'libtinyxml2-v34.so')
-        .add_needed('libui_shim.so'),
 
     'vendor/lib64/hw/audio.primary.mediatek.so': blob_fixup()
         .replace_needed('android.hardware.bluetooth.audio-V3-ndk.so', 'android.hardware.bluetooth.audio-V3-ndk-v34.so')
