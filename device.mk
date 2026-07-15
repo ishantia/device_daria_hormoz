@@ -119,7 +119,7 @@ PRODUCT_PACKAGES += \
 # Fingerprint
 $(call soong_config_set,XIAOMI_BIOMETRICS_FINGERPRINT,IMPL_VER,V2)
 PRODUCT_PACKAGES += \
-    android.hardware.biometrics.fingerprint-service.xiaomi \
+    android.hardware.biometrics.fingerprint-service.hormoz \
     libudfpshandler
 
 # Health
@@ -234,7 +234,6 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.vulkan.deqp.level-2023-03-01.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.vulkan.deqp.level-2023-03-01.xml
 
 # Power
-$(call soong_config_set,power_libperfmgr,mode_extension_lib, //$(DEVICE_PATH):libperfmgr-ext-xiaomi)
 
 PRODUCT_PACKAGES += \
     android.hardware.power-service.lineage-libperfmgr \
@@ -269,12 +268,6 @@ PRODUCT_COPY_FILES += \
 $(call inherit-product, hardware/lineage/compat/frameworks/compat.mk)
 $(call inherit-product, hardware/mediatek/frameworks/mediatek-frameworks.mk)
 
-PRODUCT_BOOT_JARS += \
-    xiaomi-telephony-stub
-
-PRODUCT_PACKAGES += \
-    xiaomi-telephony-stub
-
 PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/configs/permissions/mediatek-ims-base.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/mediatek-ims-base.xml \
     $(DEVICE_PATH)/configs/permissions/mediatek-ims-common.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/mediatek-ims-common.xml \
@@ -306,10 +299,6 @@ PRODUCT_COPY_FILES += \
 
 # Sensors
 PRODUCT_PACKAGES += \
-   android.hardware.sensors-service.xiaomi-multihal \
-   sensors.xiaomi.v2
-
-PRODUCT_PACKAGES += \
    sensors.dynamic_sensor_hal
 
 PRODUCT_COPY_FILES += \
@@ -326,7 +315,6 @@ PRODUCT_SOONG_NAMESPACES += \
     hardware/lineage/interfaces/power-libperfmgr \
     hardware/mediatek \
     hardware/mediatek/libmtkperf_client \
-    hardware/xiaomi
 
 # Thermal
 PRODUCT_PACKAGES += \
@@ -361,4 +349,4 @@ PRODUCT_PACKAGES += \
     NcmTetheringOverlay
 
 # Inherit the proprietary files
-$(call inherit-product, vendor/xiaomi/hormoz/hormoz-vendor.mk)
+$(call inherit-product, vendor/daria/hormoz/hormoz-vendor.mk)
