@@ -175,8 +175,6 @@ PRODUCT_PACKAGES += \
    FrameworksResOverlayHormoz \
    PowerOffAlarmOverlayHormoz \
    NfcOverlayHormoz \
-   SettingsProviderOverlayHormozPOCO \
-   SettingsProviderOverlayHormozRedmi \
    SettingsResOverlayHormoz \
    SystemUIOverlayHormoz
 
