@@ -4,6 +4,6 @@
 //
 
 runtime_resource_overlay {
-    name: "LineageSettingsOverlayDuchamp",
+    name: "LineageSettingsOverlayHormoz",
     product_specific: true,
 }

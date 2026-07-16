@@ -5,6 +5,6 @@
 //
 
 runtime_resource_overlay {
-    name: "SystemUIOverlayDuchamp",
+    name: "SystemUIOverlayHormoz",
     vendor: true,
 }

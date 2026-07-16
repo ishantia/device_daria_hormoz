@@ -4,6 +4,6 @@
 //
 
 runtime_resource_overlay {
-    name: "LineageSDKOverlayDuchamp",
+    name: "LineageSDKOverlayHormoz",
     product_specific: true,
 }

@@ -1,9 +1,9 @@
 SPDX-FileCopyrightText: The LineageOS Project
 
-Device configuration for Poco X6 Pro 5G/Redmi K70E
+Device configuration for Daria hormoz
 =============================================================
 
-The Poco X6 Pro 5G/Redmi K70E (codenamed _"duchamp"_) is an upper mid-range smartphone from Xiaomi.
+The Daria hormoz (codenamed _"hormoz"_) is an upper mid-range smartphone from Daria.
 It was announced and released in January 2024.
 
 ## Device specifications
@@ -26,5 +26,3 @@ Rear Camera 2 | 8 MP, f/2.2, 120˚ (ultrawide)
 Rear Camera 3 | 2 MP, f/2.4, (macro)
 Front Camera | 16 MP, f/2.4, (wide), 1/3.06", 1.0µm
 
-## Device picture
-![Poco X6 Pro 5G](https://fdn2.gsmarena.com/vv/pics/xiaomi/xiaomi-poco-x6-pro-2.jpg "Poco X6 Pro in black, yellow and grey")
